@@ -1,0 +1,93 @@
+
+    .selectBox {
+        position: relative;
+    }
+    .selectBox select {
+        width: 100%;
+        border-radius: 5px;
+        height: 36px;
+        background-color:#27BFE2;
+        color: white;
+        font-size: 17px;
+    }
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        border-radius: 5px;
+        height: 28px;
+        padding-top: 6px;
+    }
+	.overSelect span{
+	background-color: #27BFE2;
+	color: white;
+	font-size: 17px;
+	margin-left: 37%;
+	}
+    #checkboxes {
+        display: none;
+        border: 1px #dadada solid;
+        border-radius: 5px;
+    }
+    #checkboxes label {
+        display: block;
+        height: 32px;
+        padding-top: 4px;
+        color: #27BFE2;
+    }
+	#checkboxes input {
+        
+		margin-left: 12px;
+    }
+	 #checkboxes span {
+       
+		margin-left: 5px;
+    }
+    #checkboxes label:hover {
+    background-color: #27BFE2;
+	color:white
+    }
+	 #checkboxes2 {
+        display: none;
+        border: 1px #dadada solid;
+		border-radius: 5px;
+    }
+    #checkboxes2 label {
+        display: block;
+        height: 32px;
+        padding-top: 4px;
+    }
+	#checkboxes2 input {
+        
+		margin-left: 12px;
+    }
+	 #checkboxes2 span {
+      
+		margin-left: 5px;
+    }
+	 #checkboxes2 label:hover {
+        background-color: #27BFE2;
+		color:white
+    }
+	  #checkboxes3 {
+        display: none;
+        border: 1px #dadada solid;
+        border-radius: 5px;
+    }
+	 #checkboxes3 a {
+        display: block;
+        height: 28px;
+        padding-top: 2px;
+    }
+	#checkboxes3 span{
+	margin-left:12px;
+	}
+	#checkboxes3 a:hover {
+    background-color: #27BFE2;
+	color:white;
+    }
+
+   

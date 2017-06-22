@@ -1,0 +1,10 @@
+select distinct * from attribute_value av
+inner join attribute a on a.attribute_id=av.attribute_id
+inner join product p on p.product_id=av.product_id
+inner join product_category pc on pc.category_id=p.category_id
+inner join product_subcategory ps on ps.subcategory_id=p.subcategory_id
+left join product_images pm on pm.product_id=p.product_id
+where (av.attribute_value LIKE '%Solitaire%' OR p.product_name LIKE '%Solitaire%' OR
+ pc.category_name LIKE '%Solitair%' OR ps.subcategory_name LIKE '%Solitaire%')
+AND (av.attribute_value LIKE '%white%' OR p.product_name LIKE '%white%' OR pc.category_name LIKE '%white%' OR ps.subcategory_name LIKE '%white%') 
+group by p.product_id
