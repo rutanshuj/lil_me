@@ -9,7 +9,7 @@ class Cart_model extends CI_Model
     }
 function get_cartList($user_id,$api_key)
 {
-	$data=array();
+		$data=array();
 	//echo $user_id."  ".$api_key;
 					
 				$this->db->select('product_images.image_id as image_id,product_images.image_url as image_url,product.category_id,
@@ -25,17 +25,28 @@ function get_cartList($user_id,$api_key)
 				$this->db->join('product', 'product.product_id = cart.product_id','left');
 				//---prani's code
 				$this->db->join('product_category', 'product_category.category_id = product.category_id','left');
-				$this->db->join('master_size', 'master_size.size_id = cart.size_id','left');
+				$this->db->join('master_size', 'master_size.size_id = cart.size_id');
 				$this->db->order_by('image_id','desc');
 				
 				$this->db->where('cart.is_active',1);
-				
+				$this->db->where('product.is_active',1);
+
 				$this->db->where('cart.cart_status','cart');
 				$query = $this->db->get(); 
 				
 				
-				$results=$query->result_array();
+				$duplicate_result = $query->result_array();
+				$results= array();
+				foreach($duplicate_result as $arr){
+					if(!isset($results[$arr["id"]])){
+						$results[$arr["id"]] = $arr;
+						}
+					}
 				
+				 // echo"<pre>";
+				 // print_r($result);
+				 // echo"</pre>";
+				 // die();
 				
 				$total_quantity=$total_price="0";
 				$total_discount=$total_tax="0";
@@ -50,7 +61,7 @@ function get_cartList($user_id,$api_key)
 						array_push($category_id,$result_row['category_id'] );
 					}
 					
-					$product_details[$result_row['product_id']]=array(
+					$product_details[]=array(
 						'id'=>$result_row['id'],
 						'user_id'=>$result_row['user_id'],
 						'product_id'=>$result_row['product_id'],
@@ -64,10 +75,12 @@ function get_cartList($user_id,$api_key)
 						
 					);					
 				}
-				/* echo"<pre>";
-				print_r($product_details);
-				echo"</pre>";
-				die(); */
+				
+				// echo"<pre>";
+				// print_r($product_details);
+				// echo"</pre>";
+				// die();
+				
 				if(count($ids)!="0"){
 				$this->db->select('attribute_name,attribute_id');
 					$this->db->from('attribute');

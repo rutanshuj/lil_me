@@ -36,7 +36,7 @@
   }
 </style>
 
-<div class="container" style="padding-left: 8%;padding-right: 8%;padding-top: 2%;min-height: 430px;">  
+<div class="container" style="padding-left: 8%;padding-right: 8%;padding-top: 2%;min-height: 554px;">  
 <div class="row">
   <div class="col-md-9" id="basket">
 
@@ -53,6 +53,7 @@
                                 
                             </ul>
                             <h1>Shopping cart</h1>
+							
                             <p class="text-muted">You currently have <span id='cart_no_items'>
 							<?php if(isset($cart_list['total_quantity'])){
 							echo $cart_list['total_quantity'];}

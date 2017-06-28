@@ -72,7 +72,7 @@ html, body {
 
 </style>
 <div class="container" style="
-    min-height: 485px;
+    min-height: 553px;
 ">
 	<section>
 		<button id="filter_btn" type="button" class="btn btn-primary" style="margin-bottom:10px;width:100%" data-toggle="dropdown"><span>filter and Sort</span></button>

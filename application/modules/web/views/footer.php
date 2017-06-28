@@ -97,8 +97,8 @@
 								document.getElementById("cart_no_items_resp").innerHTML = json_data["total_quantity"];
 								document.getElementById("cart_total_amount_summary_resp").innerHTML = json_data["total_price"];	
 								document.getElementById("final_price").innerHTML = json_data["final_price"];
+									
 									}
-								
 									
 								}, 
 					error: function(){
@@ -187,12 +187,13 @@
 		$.ajax({
 				type: "POST",
 				dataType:"json",
-				url: "<?php echo base_url()."web/Cart/edit_cartItem"?>",				
+				url: "<?php echo base_url()."web/Cart/edit_cartItem"?>",					
 				data: {cart_id: cart_id,user_id:user_id,api_key:api_key,size:size,quantity:quantity},
 			
 									success:  function(json_data){  																		
-									//console.log(json_data);
+									console.log(json_data);
 									var product_arr=json_data['data'];
+									
 									 for(j in product_arr ){
 										
 									
@@ -206,6 +207,7 @@
 								document.getElementById("cart_no_items_resp").innerHTML = json_data["total_quantity"];
 								document.getElementById("cart_total_amount_summary_resp").innerHTML = json_data["total_price"];
 								document.getElementById("final_price").innerHTML = json_data["final_price"];
+
 									}, 
 					error: function(){
 					  	alert("Fail");
