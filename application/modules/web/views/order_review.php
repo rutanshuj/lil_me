@@ -51,7 +51,7 @@
                                 <div class="col-sm-6">
                                         <div class="box shipping-method" align="center" style="height: 188px;">
 										<span class="phone">Billing Address</span><br>
-										<a href="<?php echo base_url('web/payment/add_address?address_type=').'billing_address';?>" class="address_add" style="float:left;margin-left: 40%;">
+										<a href="<?php echo base_url('web/payment/add_address?address_type=').'billing_address';?>" class="address_add">
 										<img src="<?php echo base_url();?>assets/svgs/ic_add_black_36px.svg" style="height: 75px;"></a>	
 										
                                         </div>
@@ -85,7 +85,7 @@
 										
 										
 										<span class="phone">Shipping Address</span><br>
-										<a href="<?php echo base_url('web/payment/add_address?address_type=').'shipping_address';?>" class="address_add" style="float:left;margin-left: 40%;">
+										<a href="<?php echo base_url('web/payment/add_address?address_type=').'shipping_address';?>" class="address_add">
 										<img src="<?php echo base_url();?>assets/svgs/ic_add_black_36px.svg" style="height: 75px;"></a>	
 										
                                         </div>

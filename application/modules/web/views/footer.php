@@ -181,6 +181,9 @@
 	function sizeChange(cart_id,value)
 	{
 	//alert(cart_id);
+	document.getElementById("loader").style.display = "block";
+	$("#cart_container").attr('class','blur');
+	var myVar = setTimeout(removeLoader, 500);
 	var user_id='<?php echo $this->session->userdata('user_id');?>';//1;1;
 	var api_key='<?php echo $this->session->userdata('api_key');?>';//1;'fb0aa13efb9ac71e1c09094d7102d798';
 	edit_cartData(cart_id,user_id,api_key,value,'');
@@ -202,11 +205,7 @@
 
 									console.log(json_data);
 									var product_arr=json_data['data'];
-									document.getElementById("loader").style.display = "block";
-										  $("#cart_container").attr('class','blur');
-										var myVar = setTimeout(removeLoader, 1000);
-									 for(j in product_arr ){
-																		
+									 for(j in product_arr ){								
 								document.getElementById(product_arr[j]['id']+'price').innerHTML = product_arr[j]['price'];
 								document.getElementById(product_arr[j]['id']+'cart_price').innerHTML = product_arr[j]['price'];	
 									
