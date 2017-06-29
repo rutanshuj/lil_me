@@ -6,12 +6,12 @@
                         <form method="post" action="<?php echo base_url('web/Payment/place_order');?>">
                             <h1>Checkout - Payment method</h1>
                             <ul class="nav nav-pills nav-justified">
-                                <li class=""><a href="#"><i class="fa fa-map-marker"></i><br>Cart</a>
+                                <li class=""><a href="<?php echo base_url('web/home/cart')?>"><i class="fa fa-map-marker"></i><br>Cart</a>
                                 </li>
                                                           
-                                <li class="active"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                                <li class=""><a href="<?php echo base_url('web/Payment/order_review')?>"><i class="fa fa-eye"></i><br>Order Review</a>
                                 </li>
-                                <li class="disabled"><a href="<?php echo base_url('web/Payment/order_review')?>"><i class="fa fa-eye"></i><br>Order Review</a>
+								 <li class="active"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
                                 </li>
                             </ul>
 

@@ -101,6 +101,7 @@
                                     <thead>
                                         <tr>
                                             <th colspan="2">Product</th>
+											<th>Size</th>
 											 <th>Unit price</th>
                                             <th>Quantity</th>
                                            
@@ -118,9 +119,10 @@
                                                     <img src="<?php echo $cart_row['image_thumbnail_url']; ?>" alt="<?php echo $cart_row['product_name']; ?>">
                                                 </a>
                                             </td>
-                                            <td><a href="#"><?php echo $cart_row['product_name']; ?></a>
+                                            <td><a href="<?php echo base_url('products/').'/'.$cart_row['category_slug'].'/'.$cart_row['product_slug'].'/'.$cart_row['product_id'];?>"><?php echo $cart_row['product_name']; ?></a>
                                             </td>
-                                          
+                                          <td><?php echo $cart_row['size'];?></td>
+										  
                                             <td> &#8377;<?php echo $cart_row['original_price'];?></td>
                                               <td> <?php echo $cart_row['quantity'] ;?>
                                                 
@@ -135,7 +137,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th colspan="4">Total</th>
+                                            <th colspan="5">Total</th>
                                             <th colspan="2"><span id="cart_total_amount_summary"><?php echo $cart_list['total_price'];?></span></th>
                                         </tr>
                                     </tfoot>

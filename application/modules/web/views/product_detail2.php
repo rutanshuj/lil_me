@@ -64,7 +64,7 @@
 	   <?php $j=0;
 	   foreach($product_images as $img_row){
 		  $select='';
-		  if($i==0)
+		  if($i==1)
 			$select='active';?>
       <li data-target="#myCarousel" data-slide-to="<?php echo $j;?>" class="<?php echo $select;?>"></li>
 	   <?php $j++;} ?>

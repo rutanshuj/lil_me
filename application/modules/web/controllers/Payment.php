@@ -79,7 +79,7 @@ class Payment extends CI_Controller {
 			$insert_data = array(
 			'user_id'=>$user_id=$this->session->userdata('user_id'),
 			'firstname'=>$names[0],
-			'lastName'=>$names[1],
+			//'lastName'=>$names[1],
 		    'phone_number'=>$this->input->post('phone_number'),
 		    'city' => $this->input->post('city') ,
 		    'state '=>$this->input->post('state'),
@@ -87,6 +87,9 @@ class Payment extends CI_Controller {
 			'pincode'=>$this->input->post('pincode'),
 			'is_billing_address'=>$is_billing_address,
 			'is_shipping_address'=>$is_shipping_address);
+			if(isset($names[1])){
+				$insert_data+=array ('lastName'=>$names[1]);
+			}
 			if($this->db->insert('user_address', $insert_data))
 				{
 				$this->session->set_userdata($address_type,$this->db->insert_id());

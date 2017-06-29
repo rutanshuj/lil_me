@@ -34,9 +34,44 @@
  .div_close{
 	 float:right
   }
-</style>
+  
+  .loader {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 1;
+	margin: -75px 0 0 -75px;
+	border: 16px solid #f3f3f3;
+	 border-top: 16px solid blue;
+	border-bottom: 16px solid blue;
+	//border-right: 16px solid green;
+	//border-bottom: 16px solid red;
+    border-radius: 50%;
+    width: 100px;
+	height: 100px;
+	-webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
 
-<div class="container" style="padding-left: 8%;padding-right: 8%;padding-top: 2%;min-height: 554px;">  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.blur{
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+    
+}
+</style>
+<div id="loader" class="loader" display = "block"> </div>
+<div id= "cart_container" class="container" style="padding-left: 8%;padding-right: 8%;padding-top: 2%;min-height: 554px;">  
 <div class="row">
   <div class="col-md-9" id="basket">
 
@@ -46,9 +81,9 @@
 							<ul class="nav nav-pills nav-justified">
                                  <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>Cart</a>
                                 </li>
-								<li <?php if(!isset($cart_list['data'])) echo "class='disabled'";?> ><a href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/order_review')?>"><i class="fa fa-eye"></i><br>Order Review</a>
+								<li  <?php if(!isset($cart_list['data'])) echo "class='disabled'";?> ><a id = "order_review" href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/order_review')?>"><i class="fa fa-eye"></i><br>Order Review</a>
                                 </li>
-                                <li <?php if(!isset($cart_list['data'])) echo "class='disabled'";?>><a href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/payment_method')?>"><i class="fa fa-money"></i><br>Payment Method</a>
+                                <li  <?php if(!isset($cart_list['data'])) echo "class='disabled'";?>><a id = "payment_method" href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/payment_method')?>"><i class="fa fa-money"></i><br>Payment Method</a>
                                 </li>
                                 
                             </ul>
@@ -89,13 +124,13 @@
 											 </td>
                                             
                                             <td>
-                                                <input cart_id="<?php echo $cart_row['id']; ?>" min="0" type="number" 
+                                                <input id="quantity" cart_id="<?php echo $cart_row['id']; ?>" min="0" type="number" max="99" 
 												value="<?php echo $cart_row['quantity'] ;?>" class="form-control" style="  width: 60px;text-align: left;">
                                             </td>
 											<td>
 			<div class="form-group">
 			<select class="form-control"  data-style="btn-info" id="<?php echo $cart_row['id'].'size';?>" 
-			onclick="sizeChange(<?php echo $cart_row['id'];?>,this.value)" style="z-index: 10;position: relative;margin-top: 15px;width: 60px;">
+			onchange="sizeChange(<?php echo $cart_row['id'];?>,this.value)" style="z-index: 10;position: relative;margin-top: 15px;width: 60px;">
 												<?php
 												foreach($cart_row['size_available'] as $size_id=>$size_row)
 												{
@@ -209,7 +244,7 @@
                                 </div>
                                 <div class="pull-right">
                                     
-                                    <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
+                                    <button id = "checkout" type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
@@ -313,17 +348,52 @@
 		
 			</div>	
 		</div>
-				<script type="text/javascript">
+<script type="text/javascript">
+
 				  (function($) {
+					 $('.loader').hide();
 					var user_id='<?php echo $this->session->userdata('user_id');?>';
 					var api_key='<?php echo $this->session->userdata('api_key');?>';
-					$(":input").bind('keyup mouseup', function () {
+					$(":input").on("keyup keydown change",function(event){
+						//code that's working like a charm
 					var quantity= $(this).val(); 
 					var cart_id=$(this).attr('cart_id'); 
 					//alert(cart_id);
-					edit_cartData(cart_id,user_id,api_key,'',quantity);
+				    edit_cartData(cart_id,user_id,api_key,'',quantity);
+					
 					});
 					})(jQuery);
+// var t = false
+
+// $("input").focus(function () {
+    // var $this = $(this)
+    
+    // t = setInterval(
+
+    // function () {
+        // if (($this.val() < 1 || $this.val() > 99) && $this.val().length != 0) {
+            // if ($this.val() < 1) {
+				// alert("Invalid Input");
+                // $this.val(1);
+            // }
+            // if ($this.val() > 99) {
+                // $this.val(99);
+            // }
+            
+        // }
+    // }, 250)
+	
+// })
+
+// $('input').blur(function () {
+    // if (t != false) {
+        // window.clearInterval(t)
+        // t = false;
+    // }
+// })
+
+
+						
 				
 				</script>
 			

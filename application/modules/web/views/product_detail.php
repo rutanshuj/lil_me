@@ -57,7 +57,13 @@ margin-left: 0%;
 }
 }
 
+.carousel-indicators .active{
+	background-color: #27BFE2;
+}
 
+.carousel-indicators li{
+	background-color: #fff;
+}
 
 </style>
 	<div id="content" style="min-height: 570px;">
@@ -137,7 +143,8 @@ margin-left: 0%;
 								<div style="padding-bottom: 15px;float:left"  class="col-sm-3">
 									<div class="pdetail title" style="font-size: 23px;">Quantity</div>
 									<div class="quant-div-detail">
-										<input id='quantity' min='1' type="number" value="" class="form-control" placeholder="1" style="z-index: 10;position: relative;width: 60px;">
+										<input  class="form-control" pattern="[1-9][0-9]" id='quantity' type="number" min='1' max="99" value="1" style="z-index: 10;position: relative;width: 60px;">
+									
 										</div>
 									</div>
 									<div style="padding-bottom: 15px;float:left" class="col-sm-3" id='size_div'>
@@ -154,7 +161,7 @@ margin-left: 0%;
 										</div>
 									</div>
 									<div style="padding-bottom: 15px;" id="add_cart" class="col-sm-12">
-							<button class="btn btn-info" style="width: 200px;" type="button" onclick="add_to_cart(<?php echo $product_id ?>)">Add To Cart
+							<button id = "add_to_cart" class="btn btn-info" style="width: 200px;" type="button" onclick="add_to_cart(<?php echo $product_id ?>)">Add To Cart
 							</button>
 									</div>
 									<div style="padding-bottom: 15px;" class="col-sm-12">
@@ -179,6 +186,35 @@ margin-left: 0%;
 				</div>
 			</div>
 <script>
+
+var t = false
+
+$("#quantity").focus(function () {
+    var $this = $(this)
+    
+    t = setInterval(
+
+    function () {
+        if (($this.val() < 1 || $this.val() > 99) && $this.val().length != 0) {
+            if ($this.val() < 1) {
+                $this.val(1)
+            }
+
+            if ($this.val() > 99) {
+                $this.val(99)
+            }
+            
+        }
+    }, 250)
+})
+
+$("#quantity").blur(function () {
+    if (t != false) {
+        window.clearInterval(t)
+        t = false;
+    }
+})
+
 
 
 
@@ -241,8 +277,8 @@ function add_to_cart(target) {
         'speedIn': 500,
         'speedOut': 300,
 		'width'         : 940,
-'height'        : 400,
-'autoScale'     : false,
+		'height'        : 400,
+		'autoScale'     : false,
        // 'autoDimensions': true,
         'centerOnScroll': true  // as MattBall already said, remove the comma
     });

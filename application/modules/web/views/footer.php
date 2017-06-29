@@ -1,6 +1,6 @@
 
 <style type="text/css">
-
+ 
 </style>
 	<div id="footer" class = "footer" >
             <div class="container">
@@ -89,6 +89,10 @@
 								document.getElementById("cart_total_amount").innerHTML = '0';
 								document.getElementById("cart_no_items").innerHTML = '0';
 								document.getElementById("final_price").innerHTML = '0';
+								$('.box-footer').css('display','none');
+								$("#order_review").attr("href", "#");
+								$("#payment_method").attr("href", "#");
+								//$("#order-summary").css('display','none');
 							
 									}else{
 								document.getElementById("cart_total_amount").innerHTML = json_data["final_price"];
@@ -176,44 +180,55 @@
 	}
 	function sizeChange(cart_id,value)
 	{
-	//alert(value);
-	var user_id=1;//'<?php echo $this->session->userdata('user_id');?>';//1;1;
+	//alert(cart_id);
+	var user_id='<?php echo $this->session->userdata('user_id');?>';//1;1;
 	var api_key='<?php echo $this->session->userdata('api_key');?>';//1;'fb0aa13efb9ac71e1c09094d7102d798';
 	edit_cartData(cart_id,user_id,api_key,value,'');
 	}
+	function removeLoader(){
+		document.getElementById("loader").style.display = "none";
+		$("#cart_container").attr('class','container');
+	}
 	function edit_cartData(cart_id,user_id,api_key,size,quantity)
 	{
-		//alert(user_id);
-		$.ajax({
+
+				$.ajax({
 				type: "POST",
 				dataType:"json",
 				url: "<?php echo base_url()."web/Cart/edit_cartItem"?>",					
 				data: {cart_id: cart_id,user_id:user_id,api_key:api_key,size:size,quantity:quantity},
 			
-									success:  function(json_data){  																		
+									success:  function(json_data){ 
+
 									console.log(json_data);
 									var product_arr=json_data['data'];
-									
+									document.getElementById("loader").style.display = "block";
+										  $("#cart_container").attr('class','blur');
+										var myVar = setTimeout(removeLoader, 1000);
 									 for(j in product_arr ){
-										
-									
+																		
 								document.getElementById(product_arr[j]['id']+'price').innerHTML = product_arr[j]['price'];
 								document.getElementById(product_arr[j]['id']+'cart_price').innerHTML = product_arr[j]['price'];	
 									
 									 }
-								document.getElementById("cart_total_amount").innerHTML = json_data["final_price"];
+								document.getElementById("cart_total_amount").innerHTML = '&nbsp'+json_data["final_price"];
 								document.getElementById("cart_no_items").innerHTML = json_data["total_quantity"];
-								document.getElementById("cart_total_amount_summary").innerHTML = json_data["total_price"];
+								document.getElementById("cart_total_amount_summary").innerHTML = '&nbsp'+json_data["total_price"];
 								document.getElementById("cart_no_items_resp").innerHTML = json_data["total_quantity"];
 								document.getElementById("cart_total_amount_summary_resp").innerHTML = json_data["total_price"];
 								document.getElementById("final_price").innerHTML = json_data["final_price"];
-
+								
+								//document.getElementById("loader").style.display = "none";
 									}, 
 					error: function(){
 					  	alert("Fail");
 					  	}
 			   	});	
+		
 	}
+		//alert(user_id);
+	
+	
 	
 	</script>
 	
