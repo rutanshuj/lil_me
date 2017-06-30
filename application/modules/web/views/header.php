@@ -79,9 +79,9 @@ input[type=number]::-webkit-outer-spin-button {
 	display:none
 }
 img{
-	margin-left:20px;
 	position: relative;
 }
+
 
 
 	</style>
@@ -261,11 +261,11 @@ img{
 		
     </div>
     <div class="icons_set pull-right">
-      <a  data-toggle="collapse" data-target="#search" >
-        <img src="<?php echo base_url();?>assets/svgs/lil me icons_search.svg">
+      <a  data-toggle="collapse" data-target="#search" > 
+        <img src="<?php echo base_url();?>assets/svgs/lil me icons_search.svg">&nbsp*30
       </a>
-	   <a href="<?php echo base_url('web/home/cart');?>" class = img1>
-        <img src="<?php echo base_url();?>assets/svgs/lil me icons_cart.svg" >
+	   <a href="<?php echo base_url('web/home/cart');?>" >
+        <img src="<?php echo base_url();?>assets/svgs/lil me icons_cart.svg" >&nbsp*30
       </a>
 	  <script  src="<?php echo base_url();?>assets/plugins/fancyBox/lib/jquery-1.10.1.min.js" type="text/javascript"></script>
 	

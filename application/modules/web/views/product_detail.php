@@ -1,5 +1,6 @@
- //original product detail file 
 <script type="text/javascript">
+ //original product detail file 
+
 	var p1="2";
 	function f1(){
 		
@@ -21,6 +22,7 @@
 			
 	}}
 	
+
 </script>
 <div id="all">
 	<style>
@@ -143,7 +145,7 @@ margin-left: 0%;
 								<div style="padding-bottom: 15px;float:left"  class="col-sm-3">
 									<div class="pdetail title" style="font-size: 23px;">Quantity</div>
 									<div class="quant-div-detail">
-										<input  class="form-control" pattern="[1-9][0-9]" id='quantity' type="number" min='1' max="99" value="1" style="z-index: 10;position: relative;width: 60px;">
+										<input  class="form-control" pattern="[1-9][0-9]" id='quantity' type="number" min='1' max="99" value="1" style="z-index: 10;position: relative;width: 60px;" onInput="checkLength()">
 									
 										</div>
 									</div>
@@ -195,18 +197,14 @@ $("#quantity").focus(function () {
     t = setInterval(
 
     function () {
-        if (($this.val() < 1 || $this.val() > 99) && $this.val().length != 0) {
+        if ($this.val() < 1 && $this.val().length != 0) {
             if ($this.val() < 1) {
                 $this.val(1)
             }
-
-            if ($this.val() > 99) {
-                $this.val(99)
-            }
-            
         }
     }, 250)
-})
+	})
+
 
 $("#quantity").blur(function () {
     if (t != false) {
@@ -215,9 +213,18 @@ $("#quantity").blur(function () {
     }
 })
 
-
-
-
+function checkLength()
+{
+    var fieldLength = document.getElementById('quantity').value.length;
+    //Suppose u want 4 number of character
+    if(fieldLength <= 2){
+        return true;
+    }else{
+		 var str = document.getElementById('quantity').value;
+        str = str.substring(0, str.length - 1);
+        document.getElementById('quantity').value = str;
+	}
+}
 function add_to_cart(target) {
 	var user_id='<?php echo $this->session->userdata('user_id');?>';//1;
 	var api_key='<?php echo $this->session->userdata('api_key');?>';//'fb0aa13efb9ac71e1c09094d7102d798';

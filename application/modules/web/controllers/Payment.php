@@ -46,6 +46,9 @@ class Payment extends CI_Controller {
 			
 			$name=$this->input->post('name');
 			$names=explode(" ",$name);
+			if ( ! isset($names[1])) {
+				$names[1] = null;
+				}
 			if($address_type=='billing_address')
 			{
 				$is_billing_address=1;
@@ -76,6 +79,16 @@ class Payment extends CI_Controller {
 			}
 			}
 			else{
+				$user_id=$this->session->userdata('user_id');
+		$this->db->select('*'); 
+		$this->db->where('user_address.user_id',$user_id);
+		$this->db->where('user_address.address_value',$this->input->post('address_value'));
+		$this->db->from('user_address');
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+		{
+			
+		}else{
 			$insert_data = array(
 			'user_id'=>$user_id=$this->session->userdata('user_id'),
 			'firstname'=>$names[0],
@@ -87,6 +100,7 @@ class Payment extends CI_Controller {
 			'pincode'=>$this->input->post('pincode'),
 			'is_billing_address'=>$is_billing_address,
 			'is_shipping_address'=>$is_shipping_address);
+		}
 			if(isset($names[1])){
 				$insert_data+=array ('lastName'=>$names[1]);
 			}
@@ -97,9 +111,8 @@ class Payment extends CI_Controller {
 				$data['message']='Address Added';
 				}
 			}
-		
 		$this->order_review();
-		
+			
 		}
 	
 	public function order_review()

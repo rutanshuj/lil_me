@@ -90,7 +90,7 @@
                             <h1>Shopping cart</h1>
 							
                             <p class="text-muted">You currently have <span id='cart_no_items'>
-							<?php if(isset($cart_list['total_quantity'])){
+							<?php if(isset($cart_list['total_quantityquantity'])){
 							echo $cart_list['total_quantity'];}
 							else echo '0';?></span> item(s) in your cart.</p>
 							<?php
@@ -124,8 +124,8 @@
 											 </td>
                                             
                                             <td>
-                                                <input id="quantity" cart_id="<?php echo $cart_row['id']; ?>" min="0" type="number" max="99" 
-												value="<?php echo $cart_row['quantity'] ;?>" class="form-control" style="  width: 60px;text-align: left;">
+                                                <input id="quantity" cart_id="<?php echo $cart_row['id']; ?>" min="1" type ="number" max="99" 
+												value="<?php echo $cart_row['quantity'] ;?>" onInput="checkLength()" class="form-control" style=" width: 60px;text-align: left;" >
                                             </td>
 											<td>
 			<div class="form-group">
@@ -363,37 +363,40 @@
 					
 					});
 					})(jQuery);
-// var t = false
 
-// $("input").focus(function () {
-    // var $this = $(this)
+function checkLength(){
+var fieldLength = document.getElementById('quantity').value.length;
+    //Suppose u want 4 number of character
+    if(fieldLength <= 2){
+        return true;
+    }else{
+		 var str = document.getElementById('quantity').value;
+        str = str.substring(0, str.length - 1);
+        document.getElementById('quantity').value = str;
+	}
+}
+var t = false
+
+$("#quantity").focus(function () {
+    var $this = $(this)
     
-    // t = setInterval(
+    t = setInterval(
 
-    // function () {
-        // if (($this.val() < 1 || $this.val() > 99) && $this.val().length != 0) {
-            // if ($this.val() < 1) {
-				// alert("Invalid Input");
-                // $this.val(1);
-            // }
-            // if ($this.val() > 99) {
-                // $this.val(99);
-            // }
-            
-        // }
-    // }, 250)
-	
-// })
+    function () {
+        if ($this.val() < 1) {
+            if ($this.val() < 1) {
+				alert("Invalid Input");
+                $this.val(1);
+            }
+		}
+	}, 250 )
+})	
 
-// $('input').blur(function () {
-    // if (t != false) {
-        // window.clearInterval(t)
-        // t = false;
-    // }
-// })
-
-
-						
-				
-				</script>
+$('#quantity').blur(function () {
+    if (t != false) {
+        window.clearInterval(t)
+        t = false;
+    }
+})
+</script>
 			

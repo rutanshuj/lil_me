@@ -69,7 +69,9 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
 }
-
+img{
+margin-left: 0px;
+}
 </style>
 <div class="container" style="
     min-height: 553px;

@@ -24,7 +24,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="name">NAME</label>
-                                            <input type="text" class="form-control texts" name="name" value="<?php if(isset($address->firstname)) echo $address->firstname." ".$address->lastname ;else echo "";?>" required>
+                                            <input type="text" class="form-control texts"  name="name" value="<?php if(isset($address->firstname)) echo $address->firstname." ".$address->lastname ;else echo "";?>" required>
                                         </div>
                                     </div>
                                    
@@ -34,7 +34,7 @@
 								  <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="phone_number">TELEPHONE</label>
-                                            <input type="text" class="form-control texts" name="phone_number" value="<?php if(isset($address->phone_number)) echo $address->phone_number ;else echo "";?>" >
+                                            <input type="text" class="form-control texts" required name="phone_number" value="<?php if(isset($address->phone_number)) echo $address->phone_number ;else echo "";?>" >
                                         </div>
                                     </div>
                                </div>
@@ -45,7 +45,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="zip">PINCODE</label>
-                                            <input type="text" class="form-control texts" id="pincode" value="<?php if(isset($address->pincode)) echo $address->pincode ;else echo "";?>">
+                                            <input type="text" required class="form-control texts" id="pincode" value="<?php if(isset($address->pincode)) echo $address->pincode ;else echo "";?>">
                                         </div>
                                     </div>
 								</div>
@@ -53,13 +53,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="city">CITY</label>
-                                             <input type="text" class="form-control texts" name="city" value="<?php if(isset($address->city)) echo $address->city ;else echo "";?>" >
+                                             <input type="text" required class="form-control texts" name="city" value="<?php if(isset($address->city)) echo $address->city ;else echo "";?>" >
                                         </div>
                                     </div>
                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="state">State</label>
-                                              <input type="text" class="form-control texts" name="state" value="<?php if(isset($address->state)) echo $address->state ;else echo "";?>">
+                                              <input type="text" class="form-control texts" name="state" value="<?php if(isset($address->state)) echo $address->state ;else echo "";?>" required>
                                         </div>
                                     </div>
 
@@ -71,7 +71,7 @@
 								<div class="col-sm-12 ">
 								<input type="hidden" name="address_id" value="<?php if(isset($address->address_id)) echo $address->address_id ;?>">
 								<label for="comment">ADDRESS:</label>
-								<textarea class="form-control texts" rows="3" name="address_value" ><?php if(isset($address->address_value)) echo $address->address_value ;else echo "";?></textarea>
+								<textarea required class="form-control texts" rows="3" name="address_value" ><?php if(isset($address->address_value)) echo $address->address_value ;else echo "";?></textarea>
 								</div>
 								</div>
                                 <!-- /.row -->

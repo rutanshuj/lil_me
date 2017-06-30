@@ -192,6 +192,7 @@
 		document.getElementById("loader").style.display = "none";
 		$("#cart_container").attr('class','container');
 	}
+
 	function edit_cartData(cart_id,user_id,api_key,size,quantity)
 	{
 
@@ -200,7 +201,7 @@
 				dataType:"json",
 				url: "<?php echo base_url()."web/Cart/edit_cartItem"?>",					
 				data: {cart_id: cart_id,user_id:user_id,api_key:api_key,size:size,quantity:quantity},
-			
+				
 									success:  function(json_data){ 
 
 									console.log(json_data);
@@ -222,8 +223,7 @@
 					error: function(){
 					  	alert("Fail");
 					  	}
-			   	});	
-		
+			   	});			
 	}
 		//alert(user_id);
 	

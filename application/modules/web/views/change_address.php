@@ -12,10 +12,10 @@
 				<?php
 			
 				if(isset($address_list)) {
-						/* 	echo"<pre>";
-							print_r($address_list);
-							echo"</pre>";
-							die(); */?>
+							// echo"<pre>";
+							// print_r($address_list);
+							// echo"</pre>";
+							// die();?>
 							
                               
                                      <?php 
@@ -36,7 +36,7 @@
 										<a href="<?php echo base_url('web/payment/add_address?address_id=').$address->address_id;?>" class="addr_edit" style="float:right"><img src="<?php echo base_url();?>assets/svgs/ic_mode_edit_black_18px.svg"></a>
 										</div>
 										<hr style="margin-top: 10px;margin-bottom: 35px;">
-											<div><input type="radio" name="address_id" value="<?php echo $address->address_id;?>"></div>
+											<div><input type="radio"  name="address_id" value="<?php echo $address->address_id;?>"></div>
 											<div class='address_detail'> <span class="r_name"><b><?php echo $address->firstname." ".$address->lastname?></b></span>
 											
 											<br>
