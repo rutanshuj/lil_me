@@ -1,4 +1,4 @@
-  <div id="content">
+  <div id="content" style="min-height: 555px;">
             <div class="container">
 				
                 

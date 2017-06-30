@@ -26,7 +26,7 @@ function get_cartList($user_id,$api_key)
 				//---prani's code
 				$this->db->join('product_category', 'product_category.category_id = product.category_id','left');
 				$this->db->join('master_size', 'master_size.size_id = cart.size_id');
-				$this->db->order_by('image_id','desc');
+				$this->db->order_by('image_url','desc');
 				
 				$this->db->where('cart.is_active',1);
 				$this->db->where('product.is_active',1);

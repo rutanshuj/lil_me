@@ -34,7 +34,7 @@
 										<a href="<?php echo base_url('web/payment/change_address?address_type=').'billing_address'?>" class="addr_edit" style="float:right"><img src="<?php echo base_url();?>assets/svgs/ic_mode_edit_black_18px.svg"></a>
 										</div>
 										<hr style="margin-top: 10px;margin-bottom: 35px;">
-											<div><input type="radio" name="billing_address_id" value="<?php echo $billing_address['address_id'];?>"></div>
+											<div><input type="radio" name="billing_address_id" checked="checked" value="<?php echo $billing_address['address_id'];?>"></div>
 											<div class='address_detail'> <span class="r_name"><b><?php echo $billing_address['name']?></b></span>
 											
 											<br>
@@ -67,7 +67,7 @@
 										<a href="<?php echo base_url('web/payment/change_address?address_type=').'shipping_address'?>" class="addr_edit" style="float:right"><img src="<?php echo base_url();?>assets/svgs/ic_mode_edit_black_18px.svg"></a>
 										</div>
 										<hr style="margin-top: 10px;margin-bottom: 35px;">
-											<div><input type="radio" name="address_id" value="<?php echo $shipping_address['address_id'];?>"></div>
+											<div><input type="radio" checked="checked" name="address_id" value="<?php echo $shipping_address['address_id'];?>"></div>
 											<div class='address_detail'> <span class="r_name"><b><?php echo $shipping_address['name']?></b></span>
 											
 											<br>
@@ -102,10 +102,8 @@
                                         <tr>
                                             <th colspan="2">Product</th>
 											<th>Size</th>
-											 <th>Unit price</th>
-                                            <th>Quantity</th>
-                                           
-											
+											<th>Quantity</th>
+											 <th>Unit price</th>                                 		
                                             <th colspan="2">Total</th>
                                         </tr>
                                     </thead>
@@ -122,10 +120,8 @@
                                             <td><a href="<?php echo base_url('products/').'/'.$cart_row['category_slug'].'/'.$cart_row['product_slug'].'/'.$cart_row['product_id'];?>"><?php echo $cart_row['product_name']; ?></a>
                                             </td>
                                           <td><?php echo $cart_row['size'];?></td>
-										  
+										    <td> <?php echo $cart_row['quantity'] ;?>
                                             <td> &#8377;<?php echo $cart_row['original_price'];?></td>
-                                              <td> <?php echo $cart_row['quantity'] ;?>
-                                                
                                             </td>
                                             <td><span id="<?php echo $cart_row['id']."price";?>"> <?php echo $cart_row['price'];?> </span></td>
                                            

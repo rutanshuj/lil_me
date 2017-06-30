@@ -1,4 +1,4 @@
- 
+ //original product detail file 
 <script type="text/javascript">
 	var p1="2";
 	function f1(){
@@ -148,7 +148,7 @@ margin-left: 0%;
 										</div>
 									</div>
 									<div style="padding-bottom: 15px;float:left" class="col-sm-3" id='size_div'>
-										<div class="pdetail title" style="font-size: 23px;">Size	 </div>
+										<div class="pdetail title" style="font-size: 23px;">Size </div>
 										<div class="form-group">
 											<select class="size form-control"  data-style="btn-info" id="sizedd" name="cars" style="z-index: 10;position: relative;width: 70px;" >
 												<?php
