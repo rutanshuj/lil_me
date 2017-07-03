@@ -1,3 +1,15 @@
+<head>
+<style>
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+</style>
+</head>
 <div class='container'>
 <div class="col-md-9" id="checkout">
 
@@ -34,7 +46,7 @@
 								  <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="phone_number">TELEPHONE</label>
-                                            <input type="text" class="form-control texts" required name="phone_number" value="<?php if(isset($address->phone_number)) echo $address->phone_number ;else echo "";?>" >
+                                            <input type="number" class="form-control texts" required name="phone_number" value="<?php if(isset($address->phone_number)) echo $address->phone_number ;else echo "";?>" >
                                         </div>
                                     </div>
                                </div>

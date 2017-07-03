@@ -119,7 +119,7 @@
 										    <td> <?php echo $cart_row['quantity'] ;?>
                                             <td> &#8377;<?php echo $cart_row['original_price'];?></td>
                                             </td>
-                                            <td><span id="<?php echo $cart_row['id']."price";?>"> <?php echo $cart_row['price'];?> </span></td>
+                                            <td><span id="<?php echo $cart_row['id']."price";?>">&#8377;<?php echo $cart_row['price'];?> </span></td>
                                            
                                         </tr>
 									<?php $i++; 
@@ -130,7 +130,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="5">Total</th>
-                                            <th colspan="2"><span id="cart_total_amount_summary"><?php echo $cart_list['total_price'];?></span></th>
+                                            <th colspan="2"><span id="cart_total_amount_summary">&#8377;<?php echo $cart_list['total_price'];?></span></th>
                                         </tr>
                                     </tfoot>
                                 </table>
