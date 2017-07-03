@@ -1,4 +1,4 @@
-     <div id="content">
+     <div id="content" style = "min-height: 555px">
             <div class="container" style="padding-top: 2%; padding-left: 8%; padding-right: 8%;">
 
                 <div class="col-md-12">
@@ -60,6 +60,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+								 <?php 	
+								 ?>
 									<?php if( isset($orders) && is_array($orders)) {
 										
 										foreach($orders as $single_order){?>

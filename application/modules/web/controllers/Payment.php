@@ -36,7 +36,7 @@ class Payment extends CI_Controller {
 		$this->load->view('header',$data);	
 		$this->load->view('new_address',$data);
 		$this->load->view('footer');
-			}
+		}
 		function update_address()
 		{
 			$data['page_name']= "";

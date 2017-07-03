@@ -90,7 +90,7 @@
                             <h1>Shopping cart</h1>
 							
                             <p class="text-muted">You currently have <span id='cart_no_items'>
-							<?php if(isset($cart_list['total_quantityquantity'])){
+							<?php if(isset($cart_list['total_quantity'])){
 							echo $cart_list['total_quantity'];}
 							else echo '0';?></span> item(s) in your cart.</p>
 							<?php
@@ -125,7 +125,7 @@
                                             
                                             <td>
                                                 <input id="quantity" cart_id="<?php echo $cart_row['id']; ?>" min="1" type ="number" max="99" 
-												value="<?php echo $cart_row['quantity'] ;?>" onInput="checkLength()" class="form-control" style=" width: 60px;text-align: left;" >
+												value="<?php echo $cart_row['quantity'] ;?>" oninput = "checkLength()"  class="form-control" style=" width: 60px;text-align: left;" >
                                             </td>
 											<td>
 			<div class="form-group">
@@ -188,7 +188,7 @@
 									 <div style="padding-bottom: 15px;float:left"  class="col-sm-3 col-xs-6">
 									<div>Quantity</div>
 									<div class="quant-div-detail">
-											<input cart_id="<?php echo $cart_row['id']; ?>" min="0" type="number" 
+											<input cart_id="<?php echo $cart_row['id']; ?>" min="1" type="number" max="99"
 												value="<?php echo $cart_row['quantity'] ;?>" class="form-control" 
 												style="width: 60px;">
 										</div>
@@ -349,7 +349,6 @@
 			</div>	
 		</div>
 <script type="text/javascript">
-
 				  (function($) {
 					 $('.loader').hide();
 					var user_id='<?php echo $this->session->userdata('user_id');?>';
@@ -357,15 +356,28 @@
 					$(":input").on("keyup keydown change",function(event){
 						//code that's working like a charm
 					var quantity= $(this).val(); 
+					if(quantity !="" && quantity>0){
 					var cart_id=$(this).attr('cart_id'); 
-					//alert(cart_id);
 				    edit_cartData(cart_id,user_id,api_key,'',quantity);
-					
+					}
+					else if(quantity==""){
+						quantity = 0;
+						
+						var cart_id=$(this).attr('cart_id'); 
+				    edit_cartData(cart_id,user_id,api_key,'',quantity);
+					}
+					else if(quantity<=0){
+						quantity = 1;
+						document.getElementById('quantity').value = 1;
+						var cart_id=$(this).attr('cart_id'); 
+						edit_cartData(cart_id,user_id,api_key,'',quantity);	
+					}
 					});
 					})(jQuery);
 
 function checkLength(){
 var fieldLength = document.getElementById('quantity').value.length;
+
     //Suppose u want 4 number of character
     if(fieldLength <= 2){
         return true;
@@ -375,28 +387,28 @@ var fieldLength = document.getElementById('quantity').value.length;
         document.getElementById('quantity').value = str;
 	}
 }
-var t = false
+// var t = false
 
-$("#quantity").focus(function () {
-    var $this = $(this)
+// $("#quantity").focus(function () {
+    // var $this = $(this)
     
-    t = setInterval(
+    // t = setInterval(
 
-    function () {
-        if ($this.val() < 1) {
-            if ($this.val() < 1) {
-				alert("Invalid Input");
-                $this.val(1);
-            }
-		}
-	}, 250 )
-})	
+    // function () {
+        // if ($this.val() === '0') {
+           // // if ($this.val() < 1) {
+				// alert("Invalid Input");
+                // $this.val(1);
+           // // }
+		// }
+	// }, 250 )
+// })	
 
-$('#quantity').blur(function () {
-    if (t != false) {
-        window.clearInterval(t)
-        t = false;
-    }
-})
+// $('#quantity').blur(function () {
+    // if (t != false) {
+        // window.clearInterval(t)
+        // t = false;
+    // }
+// })
 </script>
 			

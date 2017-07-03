@@ -30,7 +30,6 @@
                                         <div class="box shipping-method" style="height: 188px;">
 											<div class="address_type" style="margin-left: 26px;"> Billing  Address
 										
-											
 										<a href="<?php echo base_url('web/payment/change_address?address_type=').'billing_address'?>" class="addr_edit" style="float:right"><img src="<?php echo base_url();?>assets/svgs/ic_mode_edit_black_18px.svg"></a>
 										</div>
 										<hr style="margin-top: 10px;margin-bottom: 35px;">
@@ -61,9 +60,7 @@
 						if(isset($shipping_address) && count($shipping_address)!=0){	 ?>
 							 <div class="col-sm-6">
                                         <div class="box shipping-method" style="height: 188px;">
-											<div class="address_type" style="margin-left: 26px;"> Shipping Address
-										
-											
+											<div class="address_type" style="margin-left: 26px;"> Shipping Address										
 										<a href="<?php echo base_url('web/payment/change_address?address_type=').'shipping_address'?>" class="addr_edit" style="float:right"><img src="<?php echo base_url();?>assets/svgs/ic_mode_edit_black_18px.svg"></a>
 										</div>
 										<hr style="margin-top: 10px;margin-bottom: 35px;">
@@ -82,8 +79,7 @@
 						<?php } else{?>
 						  <div class="col-sm-6">
                                         <div class="box shipping-method" align="center" style="height: 188px;">
-										
-										
+											
 										<span class="phone">Shipping Address</span><br>
 										<a href="<?php echo base_url('web/payment/add_address?address_type=').'shipping_address';?>" class="address_add">
 										<img src="<?php echo base_url();?>assets/svgs/ic_add_black_36px.svg" style="height: 75px;"></a>	
@@ -149,7 +145,10 @@
                                 </div>
                                 <div class="pull-right">
                                     
-                                    <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
+                                    <button id="proceed_to_checkout" type="submit" class="btn btn-primary" <?php
+									if(isset($shipping_address) && count($shipping_address)!=0){echo "enabled";}
+									else{echo "disabled";}
+									?>>Proceed to checkout <i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
@@ -260,7 +259,6 @@
 					$(":input").bind('keyup mouseup', function () {
 					var quantity= $(this).val(); 
 					var cart_id=$(this).attr('cart_id'); 
-					//alert(cart_id);
 					edit_cartData(cart_id,user_id,api_key,'',quantity);
 					});
 					})(jQuery);

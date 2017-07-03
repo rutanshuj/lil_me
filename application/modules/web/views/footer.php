@@ -195,7 +195,7 @@
 
 	function edit_cartData(cart_id,user_id,api_key,size,quantity)
 	{
-
+		
 				$.ajax({
 				type: "POST",
 				dataType:"json",

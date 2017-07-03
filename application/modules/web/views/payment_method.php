@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                                 <!-- /.row -->
-								<input type="hidden" name="amount" value="" size="64" />
+								<input type="hidden" name="amount" value="<?php  echo $cart_list['total_price']; ?>" size="64" />
                             </div>
                             <!-- /.content -->
 
