@@ -353,6 +353,9 @@
 					 $('.loader').hide();
 					var user_id='<?php echo $this->session->userdata('user_id');?>';
 					var api_key='<?php echo $this->session->userdata('api_key');?>';
+					// var quantity= $(this).val(); 
+					// var cart_id=$(this).attr('cart_id'); 
+				    // edit_cartData(cart_id,user_id,api_key,'',quantity);
 					$(":input").on("keyup keydown change",function(event){
 						//code that's working like a charm
 					var quantity= $(this).val(); 

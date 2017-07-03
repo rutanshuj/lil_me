@@ -146,7 +146,7 @@
                                 <div class="pull-right">
                                     
                                     <button id="proceed_to_checkout" type="submit" class="btn btn-primary" <?php
-									if(isset($shipping_address) && count($shipping_address)!=0){echo "enabled";}
+									if(isset($shipping_address) && count($shipping_address)!=0 && (isset($billing_address) && count($billing_address)!=0)){echo "enabled";}
 									else{echo "disabled";}
 									?>>Proceed to checkout <i class="fa fa-chevron-right"></i>
                                     </button>
