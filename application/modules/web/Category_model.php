@@ -51,12 +51,15 @@ class Category_model extends CI_Model
 		//echo $start." ".$limit;
 		$products=array();
 		$this->db->limit($limit, $start);
-		$this->db->select('distinct(p.product_id),p.product_name,pt.price');
+		$this->db->select('distinct(p.product_id),p.product_name,pt.Price');
 		$this->db->from('product p');
 		$this->db->where('p.is_active',1);
+		//$this->db->join('product_category pc','p.category_id=pc.category_id');
 		$this->db->join('pricing_table pt','pt.product_id=p.product_id');
 		$this->db->where('p.category_id',$category_id);
-		/*  
+		/*  echo"<pre>";
+		print_r($gender);
+		echo"</pre>";
 		echo"<pre>";
 		print_r($size_id);
 		echo"</pre>";
@@ -77,9 +80,8 @@ class Category_model extends CI_Model
 		
 		if($sortflag=='1')
 		{
-		$where_order_by="order_by convert(`Price`, decimal(10,2)) desc";
-		//$this->db->where($where_order_by);
-		$this->db->order_by("convert(`Price`, decimal(10,2)) desc");
+			
+		$this->db->order_by("convert('Price', decimal(10,2)) desc");
 		}
 		else if($sortflag=='2'){
 		$this->db->join('attribute_value', 'attribute_value.product_id=p.product_id');
@@ -94,26 +96,20 @@ class Category_model extends CI_Model
 		$this->db->or_where('attribute_name','Discount');
 		
 		}
-		}else if($sortflag == '4'){
-			alert("ia");
-			$where_order_by="order_by convert(`Price`, decimal(10,2)) asc";
-		//$this->db->where($where_order_by);
-		$this->db->order_by("convert(`Price`, decimal(10,2))");	
+		else if($sortflag=='4'){
+			$this->db->order_by("convert('Price', decimal(10,2))");
 		}
-		else
+		}else
 		{
-		$where_order_by="order_by convert(`Price`, decimal(10,2)) asc";
-		//$this->db->where($where_order_by);
 		$this->db->order_by("convert(`Price`, decimal(10,2))");
 		}
-
-		$query = $this->db->get();
 		
-		// echo"<pre>";
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		//exit;
+		// echo '<pre>';
 		// print_r($query->result());
-		// echo"</pre>";
-		// exit;
-
+		// echo '</pre>';
 		foreach ($query->result() as $row) {
 					
 					
@@ -149,6 +145,7 @@ class Category_model extends CI_Model
 					$products[]=$row;
 		}
 		
+	
 		return $products;
 		
 		

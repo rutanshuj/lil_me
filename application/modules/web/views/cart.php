@@ -389,7 +389,7 @@
 						var enteredVal = $(this).val();
 						if (enteredVal.length > 2) {
 							$(this).val(enteredVal.substring(0, enteredVal.length - 1));
-							console.log('More than 3 characters not allowed.');
+							console.log('More than 2 characters not allowed.');
 							return;
 							}
 							});

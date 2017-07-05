@@ -57,6 +57,10 @@
 								</div> 
 							<?php }?>
 				<?php  $shipping_address=$address_list['shipping_address'];
+				// echo '<pre>';
+				// print_r($address_list);
+				// echo '</pre>';
+				
 						if(isset($shipping_address) && count($shipping_address)!=0){	 ?>
 							 <div class="col-sm-6">
                                         <div class="box shipping-method" style="height: 188px;">

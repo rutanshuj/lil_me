@@ -80,11 +80,40 @@ class Payment extends CI_Controller {
 			}
 			else{
 				$user_id=$this->session->userdata('user_id');
+				$this->db->select('address_id');
+				$this->db->from('user_address');
+				$this->db->where('user_id',$user_id);
+				$query = $this->db->get();
+				if($query->num_rows()!=0)
+				{
+				if($address_type=='billing_address')
+				{
+				foreach($query->result() as $addr_row){
+				$update_data1[]= array(	
+				'address_id'=>$addr_row->address_id,
+				'is_billing_address'=>0,
+				);
+				}
+				}
+				else
+				{
+				foreach($query->result() as $addr_row){
+				$update_data1[]= array(	
+				'address_id'=>$addr_row->address_id,
+				'is_shipping_address'=>0,
+				);
+				}
+				}
+				$this->db->update_batch('user_address',$update_data1, 'address_id','user_id');
+				}
+			
+		$user_id=$this->session->userdata('user_id');
 		$this->db->select('*'); 
 		$this->db->where('user_address.user_id',$user_id);
 		$this->db->where('user_address.address_value',$this->input->post('address_value'));
 		$this->db->from('user_address');
 		$query = $this->db->get();
+		
 		if($query->num_rows()>0)
 		{
 			
@@ -107,7 +136,7 @@ class Payment extends CI_Controller {
 			}
 			if($this->db->insert('user_address', $insert_data))
 				{
-				$this->session->set_userdata($address_type,$this->db->insert_id());
+				
 				$data['statusCode']=1;
 				$data['message']='Address Added';
 				}

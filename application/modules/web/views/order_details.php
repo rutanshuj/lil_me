@@ -43,9 +43,9 @@
                                 <thead>
                                     <tr>
                                         <th colspan="2">Product</th>
+										<th>Size</th>
                                         <th>Unit price</th>
                                         <th>Discount</th>
-										
                                         <th>Total</th>
 										<th>Order Status</th>
                                     </tr>
@@ -80,10 +80,17 @@
                                         </td>
                                         <td><a href="#"><?php echo $order_row['product_name']; ?></a>
                                         </td>
-                                        
+                                        <td style="text-align: center;"><?php echo $order_row['size_available'][$order_row['size']];?>
+										</td>
                                         <td>&#8377;<?php echo $order_row['original_price'];?></td>
-                                        <td>&#8377;<?php //echo $order_row['individual_discount'];?></td>
-										
+									
+                                        <td>&#8377 0</td>
+										<?php
+											// echo '<pre>';
+											// print_r($order_row);
+											// echo '</pre>';
+											// die();
+										?>
                                         <td>&#8377;<?php echo $order_row['price'];?></td>
 										 <td><span class="label <?php echo $label_type?> "><?php echo $order_row['order_status'];?></span></td>
                                     </tr>
@@ -92,20 +99,20 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="5" class="text-right">Order subtotal</th>
-                                        <th>&#8377;<?php echo $orders['total_price'];?></th>
+                                        <th colspan="6" class="text-right">Order subtotal</th>
+                                        <th style="text-align: right;">&#8377;<?php echo $orders['total_price'];?></th>
                                     </tr>
                                     <tr>
-                                        <th colspan="5" class="text-right">Shipping and handling</th>
-                                        <th>&#8377;<?php echo $orders['total_discount'];?></th>
+                                        <th colspan="6" class="text-right">Shipping and handling</th>
+                                        <th style="text-align: right;">&#8377;<?php echo $orders['total_discount'];?></th>
                                     </tr>
                                     <tr>
-                                        <th colspan="5" class="text-right">Tax</th>
-                                        <th>&#8377;<?php echo $orders['total_tax'];?></th>
+                                        <th colspan="6" class="text-right">Tax</th>
+                                        <th style="text-align: right;">&#8377;<?php echo $orders['total_tax'];?></th>
                                     </tr>
                                     <tr>
-                                        <th colspan="5" class="text-right">Total</th>
-                                        <th>&#8377;<?php echo $orders['final_price'];?></th>
+                                        <th colspan="6" class="text-right">Total</th>
+                                        <th style="text-align: right;">&#8377;<?php echo $orders['final_price'];?></th>
                                     </tr>
                                 </tfoot>
 							<?php }?>	

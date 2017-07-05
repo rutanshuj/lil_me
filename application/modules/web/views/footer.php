@@ -217,8 +217,7 @@
 								document.getElementById("cart_no_items_resp").innerHTML = json_data["total_quantity"];
 								document.getElementById("cart_total_amount_summary_resp").innerHTML = json_data["total_price"];
 								document.getElementById("final_price").innerHTML = json_data["final_price"];
-								
-								//document.getElementById("loader").style.display = "none";
+
 									}, 
 					error: function(){
 					  	alert("Fail");
