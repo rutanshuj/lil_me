@@ -115,11 +115,10 @@
                                             </td>
                                             <td><a href="<?php echo base_url('products/').'/'.$cart_row['category_slug'].'/'.$cart_row['product_slug'].'/'.$cart_row['product_id'];?>"><?php echo $cart_row['product_name']; ?></a>
                                             </td>
-                                          <td><?php echo $cart_row['size'];?></td>
-										    <td> <?php echo $cart_row['quantity'] ;?>
-                                            <td> &#8377;<?php echo $cart_row['original_price'];?></td>
-                                            </td>
-                                            <td><span id="<?php echo $cart_row['id']."price";?>">&#8377;<?php echo $cart_row['price'];?> </span></td>
+											<td><?php echo $cart_row['size'];?></td>
+										    <td> <?php echo $cart_row['quantity'] ;?> </td>
+                                            <td>&#8377;<?php echo $cart_row['original_price'];?></td>
+                                            <td>&#8377<span id="<?php echo $cart_row['id']."price";?>"><?php echo $cart_row['price'];?> </span></td>
                                            
                                         </tr>
 									<?php $i++; 

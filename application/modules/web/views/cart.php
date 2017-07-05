@@ -25,6 +25,7 @@
 .td_val
 {
 	width: 90px;
+	
 }
 @media (max-width: 650px) {
 .cart_size{
@@ -105,9 +106,9 @@
                                             <th colspan="2">Product</th>
                                             <th>Quantity</th>
 											<th>Size</th>
-                                            <th>Unit price</th>
+                                            <th style = "text-align: right;">Unit price</th>
 											
-                                            <th colspan="2">Total</th>
+                                            <th style = "text-align: right;">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -124,8 +125,8 @@
 											 </td>
                                             
                                             <td>
-                                                <input id="quantity" cart_id="<?php echo $cart_row['id']; ?>" min="1" type ="number" max="99" 
-												value="<?php echo $cart_row['quantity'] ;?>" oninput = "checkLength()"  class="form-control" style=" width: 60px;text-align: left;" >
+                                                <input id="quantity_scroll" cart_id="<?php echo $cart_row['id']; ?>" min="1" type ="number" max="99" 
+												value="<?php echo $cart_row['quantity'] ;?>" oninput = "checkLength()"  class="form-control form-quantity" style=" width: 60px;text-align: left;" >
                                             </td>
 											<td>
 			<div class="form-group">
@@ -143,9 +144,9 @@
 											</select>
 										</div>
                                             </td>
-                                            <td class='td_val'> &#8377; <?php echo $cart_row['original_price'];?></td>
+                                            <td class='td_val' style = "text-align: right;"> &#8377;<?php echo $cart_row['original_price'];?></td>
                                             
-                                            <td class='td_val'>&#8377; <span id="<?php echo $cart_row['id']."price";?>"> 
+                                            <td class='td_val' style = "text-align: right;">&#8377; <span id="<?php echo $cart_row['id']."price";?>"> 
 											<?php echo $cart_row['price'];?> </span></td>
                                             <td><a href="#" onclick="hide('<?php echo $cart_row['id'];?>')"><i class="fa fa-trash-o"></i></a>
                                             </td>
@@ -158,7 +159,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="5">Total</th>
-                                            <th colspan="2" class="td_value">&#8377;<span id="cart_total_amount_summary">
+                                            <th colspan="1" style = "text-align: right;" class="td_value">&#8377;<span id="cart_total_amount_summary">
 											<?php echo $cart_list['total_price'];?></span></th>
                                         </tr>
                                     </tfoot>
@@ -189,7 +190,7 @@
 									<div>Quantity</div>
 									<div class="quant-div-detail">
 											<input cart_id="<?php echo $cart_row['id']; ?>" min="1" type="number" max="99"
-												value="<?php echo $cart_row['quantity'] ;?>" class="form-control" 
+												value="<?php echo $cart_row['quantity'] ;?>" class="form-control form-quantity" 
 												style="width: 60px;">
 										</div>
 										</div>
@@ -370,8 +371,14 @@
 				    edit_cartData(cart_id,user_id,api_key,'',quantity);
 					}
 					else if(quantity<=0){
-						quantity = 1;
-						document.getElementById('quantity').value = 1;
+					quantity = 1;
+						var x=document.getElementsByClassName("form-quantity");
+						var i;
+						for(i=0; i<x.length; i++){
+							if(x[i].value<=0){
+								x[i].value = 1;
+							}
+					}
 						var cart_id=$(this).attr('cart_id'); 
 						edit_cartData(cart_id,user_id,api_key,'',quantity);	
 					}
@@ -379,39 +386,18 @@
 					})(jQuery);
 
 function checkLength(){
-var fieldLength = document.getElementById('quantity').value.length;
-
-    //Suppose u want 4 number of character
-    if(fieldLength <= 2){
+var elements = document.getElementsByClassName("form-quantity");
+var y;
+for(y=0; y < elements.length; y++){
+	var length = elements[y].value.length;
+	var value = elements[y].value;
+	  if(length <= 2){
         return true;
-    }else{
-		 var str = document.getElementById('quantity').value;
-        str = str.substring(0, str.length - 1);
-        document.getElementById('quantity').value = str;
+    }else{	
+			 elements[y].value = value.substring(0, 2);	
+		}
 	}
 }
-// var t = false
 
-// $("#quantity").focus(function () {
-    // var $this = $(this)
-    
-    // t = setInterval(
-
-    // function () {
-        // if ($this.val() === '0') {
-           // // if ($this.val() < 1) {
-				// alert("Invalid Input");
-                // $this.val(1);
-           // // }
-		// }
-	// }, 250 )
-// })	
-
-// $('#quantity').blur(function () {
-    // if (t != false) {
-        // window.clearInterval(t)
-        // t = false;
-    // }
-// })
 </script>
 			

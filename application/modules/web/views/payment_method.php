@@ -26,7 +26,7 @@
 
                                             <div class="box-footer text-center">
 
-                                                <input type="radio" name="payment" value="payu">
+                                                <input type="radio" checked name="payment" value="payu">
                                             </div>
                                         </div>
                                     </div>
