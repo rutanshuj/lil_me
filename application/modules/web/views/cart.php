@@ -126,9 +126,9 @@
                                             
                                             <td>
                                                 <input id="quantity_scroll" cart_id="<?php echo $cart_row['id']; ?>" min="1" type ="number" max="99" 
-												value="<?php echo $cart_row['quantity'] ;?>" oninput = "checkLength()"  class="form-control form-quantity" style=" width: 60px;text-align: left;" >
+												value="<?php echo $cart_row['quantity'] ;?>" class="form-control form-quantity" style=" width: 60px;text-align: left;" >
                                             </td>
-											<td>
+											<td> 	
 			<div class="form-group">
 			<select class="form-control"  data-style="btn-info" id="<?php echo $cart_row['id'].'size';?>" 
 			onchange="sizeChange(<?php echo $cart_row['id'];?>,this.value)" style="z-index: 10;position: relative;margin-top: 15px;width: 60px;">
@@ -384,20 +384,35 @@
 					}
 					});
 					})(jQuery);
+					
+					$(".form-quantity").on('input', function() {
+						var enteredVal = $(this).val();
+						if (enteredVal.length > 2) {
+							$(this).val(enteredVal.substring(0, enteredVal.length - 1));
+							console.log('More than 3 characters not allowed.');
+							return;
+							}
+							});
 
-function checkLength(){
-var elements = document.getElementsByClassName("form-quantity");
-var y;
-for(y=0; y < elements.length; y++){
-	var length = elements[y].value.length;
-	var value = elements[y].value;
-	  if(length <= 2){
-        return true;
-    }else{	
-			 elements[y].value = value.substring(0, 2);	
-		}
-	}
-}
+// function checkLength(){
+
+// var elements = document.getElementsByClassName("form-quantity");
+// var y;
+// var ele = elements.length/2;
+
+// for(y=0; y < ele; y++){
+	// var length = elements[y].value.length;
+	
+	  // if(length <= 2){
+		
+        // return true;
+    // }else{	
+			// var value = elements[y].value;
+			 // value = value.substring(0, value.length-1);	
+			 // document.getElementsByClassName("form-quantity")[y].value = value;
+		// }
+	// }
+// }
 
 </script>
 			

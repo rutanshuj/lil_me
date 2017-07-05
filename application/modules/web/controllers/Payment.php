@@ -102,7 +102,8 @@ class Payment extends CI_Controller {
 			'is_shipping_address'=>$is_shipping_address);
 		}
 			if(isset($names[1])){
-				$insert_data+=array ('lastName'=>$names[1]);
+				//$insert_data+=array ('lastName'=>$names[1]);
+				$insert_data['lastName'] = $names[1];
 			}
 			if($this->db->insert('user_address', $insert_data))
 				{
