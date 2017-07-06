@@ -94,11 +94,11 @@ class Category_model extends CI_Model
 		$this->db->or_where('attribute_name','Discount');
 		
 		}
-		}else if($sortflag == '4'){
-			alert("ia");
-			$where_order_by="order_by convert(`Price`, decimal(10,2)) asc";
+		else if($sortflag == '4'){
+			//$where_order_by="order_by convert(`Price`, decimal(10,2)) asc";
 		//$this->db->where($where_order_by);
 		$this->db->order_by("convert(`Price`, decimal(10,2))");	
+		}
 		}
 		else
 		{
@@ -106,7 +106,6 @@ class Category_model extends CI_Model
 		//$this->db->where($where_order_by);
 		$this->db->order_by("convert(`Price`, decimal(10,2))");
 		}
-
 		$query = $this->db->get();
 		
 		// echo"<pre>";
