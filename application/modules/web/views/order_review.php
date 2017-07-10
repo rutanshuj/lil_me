@@ -128,7 +128,7 @@
 									<?php $i++; 
 									} //print_r($carts);
 									$this->session->set_userdata('carts',$carts);?>
-                                       
+                                    
                                     </tbody>
                                     <tfoot>
                                         <tr>

@@ -118,7 +118,5 @@ class Cart extends CI_controller {
 		echo json_encode($data);
 		
 	}
-	
-	
 	}
 ?>      

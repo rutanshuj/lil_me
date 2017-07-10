@@ -952,7 +952,7 @@ function get_order_details($order_id,$user_id)
 				die(); */ 
 				foreach($query->result() as $cart_row){	
 				$this->db->select('product_images.image_id as image_id,product_images.image_url as image_url,product.category_id,
-				product_images.image_thumbnail_url as image_thumbnail_url,product_images.product_id as product_images_product_id,
+				product_images.image_thumbnail_url as image_thumbnail_url,product.product_id as product_images_product_id,
 				cart.id as id,cart.user_id as user_id,
 				cart.product_id as product_id,cart.cart_status as cart_status,cart.quantity as quantity,
 				cart.price as price,
@@ -971,17 +971,16 @@ function get_order_details($order_id,$user_id)
 				 /* echo $this->db->last_query();
 				exit; */
 				$results=$product_query->result_array();
-				/* echo"<pre>";
-				print_r($results);
-				echo"</pre>";
-				die();  */
+				// echo"<pre>";
+				// print_r($results);
+				// echo"</pre>";
+				// die(); 
 				foreach($results as $result_row){
 				 
 					$image_url[$result_row['product_id']]=base_url().$result_row['image_url'];
 					$image_thumbnail_url[$result_row['product_id']]=base_url().$result_row['image_thumbnail_url'];
-					
+						//print_r($results_row['product_id']);exit;
 						array_push($ids, $result_row['product_id']);
-					
 					$product_details[]=array(
 						'id'=>$result_row['id'],
 						'user_id'=>$result_row['user_id'],
@@ -994,9 +993,8 @@ function get_order_details($order_id,$user_id)
 						'product_name'=>$result_row['product_name'],
 						'order_status'=>$result_row['order_status']
 					);					
-					
-	
 					}
+
 				}
 				if(count($ids)!="0"){
 					$this->db->select('attribute_name,attribute_id');
@@ -1067,9 +1065,6 @@ function get_order_details($order_id,$user_id)
 						);		
 					unset($size);
 					}
-					
-						
-				
 				$data['total_quantity']=$total_quantity;
 				$data['total_price']=$total_price;
 				$data['total_item']=count($result_data);	
@@ -1077,15 +1072,11 @@ function get_order_details($order_id,$user_id)
 				$data['total_discount']=$total_discount;
 				$data['total_tax']=$total_tax;
 				$data['final_price']=$final_price;
-					
 				}
 				$data['shipping_address']=$ship_addr_arr;
 				$data['billing_address']=$bill_addr_arr;
 		//$response=array('shipping_address'=>$ship_addr_arr,'billing_address' => $bill_addr_arr,'cart'=>$data);		
-		/* echo"<pre>";
-		print_r($data);
-		echo"</pre>"; 
-		die();	 */	
+		
 	return $data;
 	}
 }

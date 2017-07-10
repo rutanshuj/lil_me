@@ -303,7 +303,7 @@ class Payment extends CI_Controller {
 		$amount=$this->input->post('amount');
 		$data['page_name']= "";
 		if($payment=='cod')
-		{
+		{	
 			$txnid=substr(rand(),0,10);
 			$status='success';
 			$user['carts']=$this->session->userdata('carts');
@@ -322,14 +322,14 @@ class Payment extends CI_Controller {
 				$transaction_id=$this->db->insert_id();		
 			if($status=='success')
 			{
-			  foreach($user['carts'] as $c_id){
+				foreach($user['carts'] as $c_id){
+					
 					//$updateData=array('transaction_id'=>$transaction_id);
 				$this->db->select('quantity');
 				$this->db->from('cart');
 				$this->db->where('id',$c_id);
 				$query = $this->db->get();
 				$row=$query->row();
-				
 				//die(); 
 				for($i=0;$i<$row->quantity;$i++)
 					{
@@ -342,21 +342,20 @@ class Payment extends CI_Controller {
 					 );
 				}
 				$this->db->insert_batch('order_tracker', $order_tracker_save); 
-				
+				//print_r($order_tracker_save); exit;
 				$update_data[]= array(				
 				'id'=>$c_id,
 				'user_id'=>$this->session->userdata('user_id'),
 				'cart_status'=>'order_placed',
 				'transaction_id'=>$transaction_id
 				);
-					$this->db->where('id', $c_id);
-		//$this->db->update('cart', $update_data);
+					
 					
 				}
 				$this->db->update_batch('cart',$update_data, 'id','user_id'); 
 				//print_r($update_data);
 			}
-		   
+		  
 			$data['message']= "<h3>Thank You. Your order status is ". $status .".</h3>";
 			$this->session->set_userdata('trans_message',$data['message']);
 			//$this->order_history();

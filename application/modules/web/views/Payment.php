@@ -296,14 +296,19 @@ class Payment extends CI_Controller {
 				'id'=>$c_id,
 				'user_id'=>$this->session->userdata('user_id'),
 				'cart_status'=>'order_placed',
+				'is_active'=>0,
 				'transaction_id'=>$transaction_id
 				);
 					$this->db->where('id', $c_id);
-		//$this->db->update('cart', $update_data);
+					//$this->db->update('cart', $update_data, 'id', 'user_id');
 					
 				}
+				echo '<pre>';
+				print_r($update_data);
+				echo '</pre>';
+				exit;
 				$this->db->update_batch('cart',$update_data, 'id','user_id'); 
-				//print_r($update_data);
+				
 			}
 		   
 			$data['message']= "<h3>Thank You. Your order status is ". $status .".</h3>";

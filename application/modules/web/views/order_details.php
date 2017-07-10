@@ -51,10 +51,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+								
 						<?php if(isset($orders['data']) && is_array($orders['data'])&&(count($orders['data'])!="0")) {
 						$i=1;
 						//$summary=$cart_list['data'];
 						foreach($orders['data'] as $order_row){
+							//print_r($orders['data']);
+							//exit;
+							
 						switch ($order_row['order_status']) {
 						case 'In Progress':
 							$label_type='label-info';
@@ -85,12 +89,6 @@
                                         <td>&#8377;<?php echo $order_row['original_price'];?></td>
 									
                                         <td>&#8377 0</td>
-										<?php
-											// echo '<pre>';
-											// print_r($order_row);
-											// echo '</pre>';
-											// die();
-										?>
                                         <td>&#8377;<?php echo $order_row['price'];?></td>
 										 <td><span class="label <?php echo $label_type?> "><?php echo $order_row['order_status'];?></span></td>
                                     </tr>

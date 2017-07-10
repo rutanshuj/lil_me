@@ -401,9 +401,7 @@ $( '.custom_ul a' ).on( 'click', function( event ) {
       options.splice( idx, 1 );
       setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
    } else {
-      options.push( val );
-	 
-	  
+      options.push( val ); 
 	  setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
    }
 
