@@ -956,6 +956,7 @@ function get_order_details($order_id,$user_id)
 				cart.id as id,cart.user_id as user_id,
 				cart.product_id as product_id,cart.cart_status as cart_status,cart.quantity as quantity,
 				cart.price as price,
+				cart.discount as discount,
 				cart.size_id as size,product.product_name as product_name,order_status');
 				$this->db->from('cart');
 				$this->db->where('cart.id',$cart_row->id);
@@ -989,6 +990,7 @@ function get_order_details($order_id,$user_id)
 						'cart_status'=>$result_row['cart_status'],
 						'quantity'=>1,
 						'price'=>1*$result_row['price'],
+						'discount'=>$result_row['discount'],
 						'original_price'=>$result_row['price'],
 						'product_name'=>$result_row['product_name'],
 						'order_status'=>$result_row['order_status']
@@ -1058,6 +1060,7 @@ function get_order_details($order_id,$user_id)
 							'quantity'=>$rows['quantity'],
 							'price'=>$rows['price'],
 							'original_price'=>$rows['original_price'],
+							'discount'=>$rows['discount'],
 							'product_name'=>$product_name,
 							'image_url'=>$product_image_url,
 							'image_thumbnail_url'=>$product_image_thumbnail_url,

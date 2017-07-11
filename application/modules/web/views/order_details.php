@@ -88,7 +88,7 @@
 										</td>
                                         <td>&#8377;<?php echo $order_row['original_price'];?></td>
 									
-                                        <td>&#8377 0</td>
+                                        <td>&#8377; <?php echo $order_row['discount'];?></td>
                                         <td>&#8377;<?php echo $order_row['price'];?></td>
 										 <td><span class="label <?php echo $label_type?> "><?php echo $order_row['order_status'];?></span></td>
                                     </tr>
