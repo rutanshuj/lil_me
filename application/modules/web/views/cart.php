@@ -81,11 +81,11 @@
 
                         <form method="post" action="<?php echo base_url('web/Payment/order_review');?>">
 							<ul class="nav nav-pills nav-justified">
-                                 <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>Cart</a>
+                                 <li class="active"><a href="#" id="cart"><i class="fa fa-map-marker"></i><br>Cart</a>
                                 </li>
-								<li  <?php if(!isset($cart_list['data'])) echo "class='disabled'";?> ><a id = "order_review" href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/order_review')?>"><i class="fa fa-eye"></i><br>Order Review</a>
+								<li  <?php if(!isset($cart_list['data'])) echo "style = 'display : none;'"?> ><a id = "order_review" href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/order_review')?>"><i class="fa fa-eye"></i><br>Order Review</a>
                                 </li>
-                                <li  <?php if(!isset($cart_list['data'])) echo "class='disabled'";?>><a id = "payment_method" href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/payment_method')?>"><i class="fa fa-money"></i><br>Payment Method</a>
+                                <li  <?php if(!isset($cart_list['data'])) echo "style = 'display : none;'";?>><a id = "payment_method" href="<?php if(!isset($cart_list['data'])) echo "#";else echo base_url('web/Payment/payment_method')?>"><i class="fa fa-money"></i><br>Payment Method</a>
                                 </li>
                                 
                             </ul>
@@ -385,8 +385,7 @@
 					}
 					});
 					})(jQuery);
-					
-
+	
 					$(".form-quantity").on('input', function() {
 						var enteredVal = $(this).val();
 						if (enteredVal.length > 2) {

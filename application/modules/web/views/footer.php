@@ -87,8 +87,11 @@
 								document.getElementById("cart_no_items").innerHTML = '0';
 								document.getElementById("final_price").innerHTML = '0';
 								$('.box-footer').css('display','none');
-								$("#order_review").attr("href", "#");
-								$("#payment_method").attr("href", "#");
+								$('#cart').css('width', "662px");
+								$('#order_review').css('display', 'none');
+								$('#payment_method').css('display','none');
+								
+								
 								//$("#order-summary").css('display','none');
 							
 									}else{
