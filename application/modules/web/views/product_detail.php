@@ -256,15 +256,11 @@ function add_to_cart(target) {
 										});
 									}
 									else{
-										// setTimeout(function(){
-											// document.getElementById('cart_result').style.visibility = 'hidden';
-											// }, 300000);
+										
 										$("#cart_result").fadeOut(1, function() {
 											$(this).text(data['message']).fadeIn();
 											});
-											//$("#cart_result").text(data['message']);
-											
-										//alert(data['message']);
+										
 										}								
 										}, 
 					error: function(){

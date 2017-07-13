@@ -70,6 +70,7 @@
   filter: blur(10px);
     
 }
+
 </style>
 <div id="loader" class="loader" display = "block"> </div>
 <div id= "cart_container" class="container" style="padding-left: 8%;padding-right: 8%;padding-top: 2%;min-height: 554px;">  
@@ -144,10 +145,10 @@
 											</select>
 										</div>
                                             </td>
-                                            <td class='td_val' style = "text-align: right;"> &#8377;<?php echo $cart_row['original_price'];?></td>
-                                            
+                                            <td class='td_val' style = "text-align: right;"> &#8377;<?php echo number_format($cart_row['original_price']);?></td>
+                                      
                                             <td class='td_val' style = "text-align: right;">&#8377; <span id="<?php echo $cart_row['id']."price";?>"> 
-											<?php echo $cart_row['price'];?> </span></td>
+											<?php echo number_format($cart_row['price']);?> </span></td>
                                             <td><a href="#" onclick="hide('<?php echo $cart_row['id'];?>')"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -160,7 +161,7 @@
                                         <tr>
                                             <th colspan="5">Total</th>
                                             <th colspan="1" style = "text-align: right;" class="td_value">&#8377;<span id="cart_total_amount_summary">
-											<?php echo $cart_list['total_price'];?></span></th>
+											<?php echo number_format($cart_list['total_price']);?></span></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -213,7 +214,7 @@
 										</div>
 									</div>
 									<div class="cart-itemprice col-sm-12">Price:
-									  <span class="price_tag" id="<?php echo $cart_row['id']."cart_price";?>">&#8377; 
+									  <span class="price_tag number" id="<?php echo $cart_row['id']."cart_price";?>">&#8377; 
 										<?php echo $cart_row['price'];?>  
 									  </span>
 									</div>
@@ -224,10 +225,10 @@
 								<?php	$i++;
 								} ?>
 								<div id="col-sm-12">
-								  <div class="cart_no_items" >Total Item:
+								  <div class="cart_no_items number" >Total Item:
 									<span id="cart_no_items_resp"><?php echo $cart_list['total_quantity'];?></span>
 								  </div>
-								  <div class="cart_total_amount" >
+								  <div class="cart_total_amount number" >
 								  &#8377; &nbsp; <span id="cart_total_amount_summary_resp">
 									<?php echo $cart_list['total_price'];?></span>
 								  </div>
@@ -385,6 +386,7 @@
 					});
 					})(jQuery);
 					
+
 					$(".form-quantity").on('input', function() {
 						var enteredVal = $(this).val();
 						if (enteredVal.length > 2) {
@@ -394,25 +396,6 @@
 							}
 							});
 
-// function checkLength(){
-
-// var elements = document.getElementsByClassName("form-quantity");
-// var y;
-// var ele = elements.length/2;
-
-// for(y=0; y < ele; y++){
-	// var length = elements[y].value.length;
-	
-	  // if(length <= 2){
-		
-        // return true;
-    // }else{	
-			// var value = elements[y].value;
-			 // value = value.substring(0, value.length-1);	
-			 // document.getElementsByClassName("form-quantity")[y].value = value;
-		// }
-	// }
-// }
 
 </script>
 			

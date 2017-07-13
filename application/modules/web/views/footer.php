@@ -14,9 +14,6 @@
                     <div class="col-md-3 col-sm-6">
 
                         <h4>Company</h4>
-
-                        
-
                         <ul>
                             <li><a href="<?php echo base_url('web/home/about_us')?>">About Us</a>
                             </li>

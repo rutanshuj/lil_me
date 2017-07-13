@@ -350,7 +350,7 @@ function delete_cart($cart_id,$user_id,$api_key){
 			
 			$query12 = $this->db->get(); 
 			if($query12->num_rows()!="0"){
-				$data['message']='Product already added in cart';
+				$data['message']='Product already exists in cart';
 			} else 				
 			if($query->num_rows()=="0"){
 				$data['message']='Unauthorised Access';
